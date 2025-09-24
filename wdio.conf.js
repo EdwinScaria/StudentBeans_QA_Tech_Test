@@ -21,7 +21,7 @@ exports.config = {
 
   capabilities: [
     {
-      maxInstances: 1,
+      maxInstances: 3,   // increased the instances so that it can hadnle load
       browserName: 'chrome',
       'goog:chromeOptions': {
         // to run chrome headless the following flags are required
@@ -72,7 +72,7 @@ exports.config = {
   framework: 'cucumber',
 
   cucumberOpts: {
-    require: ['test/stepDefs/*.js'],
+    require: ['test/stepDefs/**/*.js'],  // ** added to pick up all the files
     backtrace: false,
     requireModule: [],
     dryRun: false,
@@ -82,8 +82,8 @@ exports.config = {
     snippets: true,
     source: true,
     profile: [],
-    strict: false,
-    tagExpression: 'not @ignore and not @manual',
+    strict: true,
+    tags: '@search or @offers or @register',   // defining all 3 features to run
     timeout: 60000,
     ignoreUndefinedDefinitions: false
   },
